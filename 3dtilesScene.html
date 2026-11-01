@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>three-player-controller</title>
+        <style>
+            html,
+            body {
+                height: 100%;
+                margin: 0;
+            }
+            #container {
+                overflow: hidden !important;
+                width: 100vw;
+                height: 100vh;
+                position: absolute;
+                inset: 0;
+                background: transparent;
+            }
+
+            #google-attributions {
+                position: fixed;
+                left: 88px;
+                bottom: 0;
+                z-index: 9998;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 8px;
+                min-height: 48px;
+                max-width: min(520px, calc(100vw - 160px));
+                color: #e6eef6;
+                font: 12px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+            }
+
+            #google-attributions img {
+                height: 18px;
+            }
+        </style>
+        <script src="./loader.js" data-demo="3DTiles Scene"></script>
+      <script type="module" crossorigin src="/assets/tiles-tGq-txvm.js"></script>
+      <link rel="stylesheet" crossorigin href="/assets/tiles-1pHv3Hie.css">
+    </head>
+    <body>
+        <div id="container"></div>
+
+        <div class="hud" role="note" aria-label="Controls">
+            <div class="hint-move">
+                <div class="hint-cluster">
+                    <div class="wasd">
+                        <kbd class="wasd-w">W</kbd>
+                        <kbd class="wasd-a">A</kbd>
+                        <kbd class="wasd-s">S</kbd>
+                        <kbd class="wasd-d">D</kbd>
+                    </div>
+                    <span class="hint-text">Move</span>
+                </div>
+                <div class="hint-cluster">
+                    <div class="hint-mouse" aria-hidden="true">
+                        <div class="hint-mouse-body">
+                            <span class="hint-mouse-wheel"></span>
+                            <span class="hint-mouse-nub"></span>
+                        </div>
+                    </div>
+                    <span class="hint-text">Look</span>
+                </div>
+            </div>
+            <div class="hint-actions">
+                <div class="hint-group">
+                    <span class="hint-keys"><kbd>Shift</kbd></span>
+                    <span class="hint-text">Sprint</span>
+                </div>
+                <div class="hint-group">
+                    <span class="hint-keys"><kbd>Space</kbd></span>
+                    <span class="hint-text">Jump</span>
+                </div>
+                <div class="hint-group">
+                    <span class="hint-keys"><kbd>V</kbd></span>
+                    <span class="hint-text">Toggle View</span>
+                </div>
+                <div class="hint-group">
+                    <span class="hint-keys"><kbd>F</kbd></span>
+                    <span class="hint-text">Toggle Fly</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="top-notice">
+            <div class="credit-line">
+                Powered by:
+                <a href="https://mapsplatform.google.com/resources/blog/create-immersive-3d-map-experiences-photorealistic-3d-tiles/" target="_blank" rel="noopener noreferrer">Google Photorealistic 3D Tiles</a>
+                &
+                <a href="https://ion.cesium.com/" target="_blank" rel="noopener noreferrer">Cesium Ion</a>
+            </div>
+            <div class="credit-line">
+                3D Tiles Loader:
+                <a href="https://github.com/NASA-AMMOS/3DTilesRendererJS" target="_blank" rel="noopener noreferrer">3DTilesRendererJS</a>
+                ·
+                Globe:
+                <a href="https://github.com/cyanfish-x/tellux" target="_blank" rel="noopener noreferrer">Tellux</a>
+            </div>
+        </div>
+
+        <aside id="google-attributions" aria-label="Map data attributions"></aside>
+
+        <a class="source" href="https://github.com/hh-hang/three-player-controller/blob/master/example/3dtilesScene.js" target="_blank" rel="noopener noreferrer">
+            <img src="./img/source.svg" alt="" />
+        </a>
+
+    </body>
+</html>

@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>three-player-controller</title>
+        <style>
+            html,
+            body {
+                height: 100%;
+                margin: 0;
+            }
+            #container {
+                overflow: hidden !important;
+                width: 100vw;
+                height: 100vh;
+                position: absolute;
+                background: transparent;
+            }
+        </style>
+        <script src="./loader.js" data-demo="glTF Scene"></script>
+      <script type="module" crossorigin src="/assets/gltf-BDI-qc2m.js"></script>
+      <link rel="modulepreload" crossorigin href="/assets/PlayerController-CfEkDdJ8.js">
+      <link rel="modulepreload" crossorigin href="/assets/SunLight-D1IeCz9f.js">
+      <link rel="modulepreload" crossorigin href="/assets/Sky-BBcu83W0.js">
+      <link rel="modulepreload" crossorigin href="/assets/KTX2Loader-BxDzy3GJ.js">
+      <link rel="modulepreload" crossorigin href="/assets/FootIK-D1-rS3bg.js">
+      <link rel="modulepreload" crossorigin href="/assets/stats.module--VATS4Kh.js">
+      <link rel="stylesheet" crossorigin href="/assets/PlayerController-1pHv3Hie.css">
+    </head>
+    <body>
+        <div id="container"></div>
+
+        <div class="hud" data-hint-mode="on-foot" role="note" aria-label="Controls">
+            <div class="hint-set" data-for="on-foot">
+                <div class="hint-move">
+                    <div class="hint-cluster">
+                        <div class="wasd">
+                            <kbd class="wasd-w">W</kbd>
+                            <kbd class="wasd-a">A</kbd>
+                            <kbd class="wasd-s">S</kbd>
+                            <kbd class="wasd-d">D</kbd>
+                        </div>
+                        <span class="hint-text">Move</span>
+                    </div>
+                    <div class="hint-cluster">
+                        <div class="hint-mouse" aria-hidden="true">
+                            <div class="hint-mouse-body">
+                                <span class="hint-mouse-wheel"></span>
+                                <span class="hint-mouse-nub"></span>
+                            </div>
+                        </div>
+                        <span class="hint-text">Look</span>
+                    </div>
+                </div>
+                <div class="hint-actions">
+                    <div class="hint-group">
+                        <span class="hint-keys"><kbd>Shift</kbd></span>
+                        <span class="hint-text">Sprint</span>
+                    </div>
+                    <div class="hint-group">
+                        <span class="hint-keys"><kbd>Space</kbd></span>
+                        <span class="hint-text">Jump</span>
+                    </div>
+                    <div class="hint-group">
+                        <span class="hint-keys"><kbd>E</kbd></span>
+                        <span class="hint-text">Enter</span>
+                    </div>
+                    <div class="hint-group">
+                        <span class="hint-keys"><kbd>V</kbd></span>
+                        <span class="hint-text">Toggle View</span>
+                    </div>
+                    <div class="hint-group">
+                        <span class="hint-keys"><kbd>F</kbd></span>
+                        <span class="hint-text">Toggle Fly</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hint-set" data-for="vehicle">
+                <div class="hint-move">
+                    <div class="hint-cluster">
+                        <div class="wasd">
+                            <kbd class="wasd-w">W</kbd>
+                            <kbd class="wasd-a">A</kbd>
+                            <kbd class="wasd-s">S</kbd>
+                            <kbd class="wasd-d">D</kbd>
+                        </div>
+                        <span class="hint-text">Drive</span>
+                    </div>
+                    <div class="hint-cluster">
+                        <div class="hint-mouse" aria-hidden="true">
+                            <div class="hint-mouse-body">
+                                <span class="hint-mouse-wheel"></span>
+                                <span class="hint-mouse-nub"></span>
+                            </div>
+                        </div>
+                        <span class="hint-text">Look</span>
+                    </div>
+                </div>
+                <div class="hint-actions">
+                    <div class="hint-group">
+                        <span class="hint-keys"><kbd>Shift</kbd></span>
+                        <span class="hint-text">Drift</span>
+                    </div>
+                    <div class="hint-group">
+                        <span class="hint-keys"><kbd>Space</kbd></span>
+                        <span class="hint-text">Brake</span>
+                    </div>
+                    <div class="hint-group">
+                        <span class="hint-keys"><kbd>E</kbd></span>
+                        <span class="hint-text">Exit</span>
+                    </div>
+                    <div class="hint-group">
+                        <span class="hint-keys"><kbd>V</kbd></span>
+                        <span class="hint-text">Toggle View</span>
+                    </div>
+                    <div class="hint-group">
+                        <span class="hint-keys"><kbd>R</kbd></span>
+                        <span class="hint-text">Reset Vehicle</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="model-credit">
+            Scene model:
+            <a href="https://sketchfab.com/3d-models/burnout-revenge-central-route-crash-junction-cfb4bec737644befb4a39d28e30a3926" target="_blank" rel="noopener noreferrer">Sketchfab</a>
+            <br />
+            Vehicle model:
+            <a href="https://sketchfab.com/3d-models/generic-sedan-car-58c33766470d46e7b2aed542650494e5" target="_blank" rel="noopener noreferrer">Generic Sedan Car</a>
+        </div>
+
+        <a class="source" href="https://github.com/hh-hang/three-player-controller/blob/master/example/glTF.js" target="_blank" rel="noopener noreferrer">
+            <img src="./img/source.svg" alt="" />
+        </a>
+
+    </body>
+</html>

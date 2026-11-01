@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+        <title>天桥 GTA - Tianqiao GTA</title>
+        <style>
+            html, body {
+                height: 100%;
+                margin: 0;
+                overflow: hidden;
+                background: #87ceeb;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+                user-select: none;
+                -webkit-user-select: none;
+                touch-action: none;
+            }
+
+            #container {
+                width: 100vw;
+                height: 100vh;
+                display: block;
+            }
+
+            /* GTA Top Banner */
+            #gta-header {
+                position: fixed;
+                top: 14px;
+                left: 16px;
+                z-index: 100;
+                pointer-events: none;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .gta-title-badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                background: rgba(18, 24, 38, 0.88);
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                border-left: 4px solid #f44336;
+                padding: 6px 14px;
+                border-radius: 6px;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+            }
+
+            .gta-logo-text {
+                font-weight: 900;
+                font-size: 18px;
+                letter-spacing: 1px;
+                color: #fff;
+                text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            }
+
+            .gta-sub-text {
+                font-size: 12px;
+                color: #ff9800;
+                font-weight: 700;
+                padding: 2px 6px;
+                background: rgba(255, 152, 0, 0.15);
+                border-radius: 4px;
+            }
+
+            /* Mission Tracker */
+            #mission-tracker {
+                background: rgba(18, 24, 38, 0.85);
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 8px;
+                padding: 10px 14px;
+                max-width: 280px;
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+            }
+
+            .tracker-title {
+                font-size: 12px;
+                color: #a0aec0;
+                font-weight: 600;
+                margin-bottom: 6px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+
+            .mission-item {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 13px;
+                color: #e2e8f0;
+                margin-bottom: 5px;
+                font-weight: 500;
+            }
+
+            .mission-dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                flex-shrink: 0;
+            }
+            .dot-red { background: #ff3344; box-shadow: 0 0 8px #ff3344; }
+            .dot-yellow { background: #ffcc00; box-shadow: 0 0 8px #ffcc00; }
+            .dot-purple { background: #a855f7; box-shadow: 0 0 8px #a855f7; }
+            .dot-green { background: #22c55e; box-shadow: 0 0 8px #22c55e; }
+
+            /* Action / Proximity Notice */
+            #action-prompt {
+                position: fixed;
+                bottom: 120px;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 100;
+                pointer-events: none;
+                display: none;
+                align-items: center;
+                gap: 10px;
+                background: rgba(15, 23, 42, 0.92);
+                border: 1px solid rgba(245, 181, 53, 0.6);
+                border-radius: 30px;
+                padding: 10px 22px;
+                color: #fff;
+                font-size: 14px;
+                font-weight: 700;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 12px rgba(245, 181, 53, 0.4);
+                animation: prompt-float 1.2s ease-in-out infinite alternate;
+            }
+
+            @keyframes prompt-float {
+                from { transform: translate(-50%, 0); }
+                to { transform: translate(-50%, -6px); }
+            }
+
+            .prompt-key {
+                background: #f5b535;
+                color: #111;
+                padding: 3px 8px;
+                border-radius: 4px;
+                font-weight: 900;
+                font-size: 12px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            }
+
+            /* Controls Overlay for Desktop */
+            .hud {
+                position: fixed;
+                bottom: 18px;
+                left: 18px;
+                z-index: 90;
+            }
+        </style>
+        <script src="./loader.js" data-demo="天桥 GTA (Tianqiao GTA)"></script>
+      <script type="module" crossorigin src="/assets/tianqiao-DE_UOf_c.js"></script>
+      <link rel="modulepreload" crossorigin href="/assets/PlayerController-CfEkDdJ8.js">
+      <link rel="modulepreload" crossorigin href="/assets/Sky-BBcu83W0.js">
+      <link rel="modulepreload" crossorigin href="/assets/SunLight-D1IeCz9f.js">
+      <link rel="stylesheet" crossorigin href="/assets/PlayerController-1pHv3Hie.css">
+    </head>
+    <body>
+        <div id="container"></div>
+
+        <!-- Top Status HUD -->
+        <div id="gta-header">
+            <div class="gta-title-badge">
+                <span class="gta-logo-text">天桥 GTA</span>
+                <span class="gta-sub-text">STEP 1: 城市小地图</span>
+            </div>
+            <div id="mission-tracker">
+                <div class="tracker-title">📍 地图标记探索</div>
+                <div class="mission-item"><span class="mission-dot dot-green"></span> 🏠 我的家 (出生点 & 车位)</div>
+                <div class="mission-item"><span class="mission-dot dot-red"></span> 🔴 任务点 1：便利店采购</div>
+                <div class="mission-item"><span class="mission-dot dot-yellow"></span> 🟡 任务点 2：电车工坊</div>
+                <div class="mission-item"><span class="mission-dot dot-purple"></span> 🟣 任务点 3：标志性天桥顶</div>
+            </div>
+        </div>
+
+        <!-- Prompt dialog -->
+        <div id="action-prompt">
+            <span class="prompt-key">E</span>
+            <span id="prompt-text">靠近载具，按 E 键驾驶</span>
+        </div>
+
+        <!-- Desktop keyboard control hints -->
+        <div class="hud" data-hint-mode="on-foot" role="note" aria-label="Controls">
+            <div class="hint-set" data-for="on-foot">
+                <div class="hint-move">
+                    <div class="hint-cluster">
+                        <div class="wasd">
+                            <kbd class="wasd-w">W</kbd>
+                            <kbd class="wasd-a">A</kbd>
+                            <kbd class="wasd-s">S</kbd>
+                            <kbd class="wasd-d">D</kbd>
+                        </div>
+                        <span class="hint-text">移动</span>
+                    </div>
+                </div>
+                <div class="hint-actions">
+                    <div class="hint-group">
+                        <span class="hint-keys"><kbd>Shift</kbd></span>
+                        <span class="hint-text">冲刺</span>
+                    </div>
+                    <div class="hint-group">
+                        <span class="hint-keys"><kbd>Space</kbd></span>
+                        <span class="hint-text">跳跃</span>
+                    </div>
+                    <div class="hint-group">
+                        <span class="hint-keys"><kbd>E</kbd></span>
+                        <span class="hint-text">上车 / 交互</span>
+                    </div>
+                    <div class="hint-group">
+                        <span class="hint-keys"><kbd>V</kbd></span>
+                        <span class="hint-text">视角</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hint-set" data-for="vehicle">
+                <div class="hint-move">
+                    <div class="hint-cluster">
+                        <div class="wasd">
+                            <kbd class="wasd-w">W</kbd>
+                            <kbd class="wasd-a">A</kbd>
+                            <kbd class="wasd-s">S</kbd>
+                            <kbd class="wasd-d">D</kbd>
+                        </div>
+                        <span class="hint-text">驾驶</span>
+                    </div>
+                </div>
+                <div class="hint-actions">
+                    <div class="hint-group">
+                        <span class="hint-keys"><kbd>Shift</kbd></span>
+                        <span class="hint-text">漂移</span>
+                    </div>
+                    <div class="hint-group">
+                        <span class="hint-keys"><kbd>Space</kbd></span>
+                        <span class="hint-text">刹车</span>
+                    </div>
+                    <div class="hint-group">
+                        <span class="hint-keys"><kbd>E</kbd></span>
+                        <span class="hint-text">下车</span>
+                    </div>
+                    <div class="hint-group">
+                        <span class="hint-keys"><kbd>V</kbd></span>
+                        <span class="hint-text">视角</span>
+                    </div>
+                    <div class="hint-group">
+                        <span class="hint-keys"><kbd>R</kbd></span>
+                        <span class="hint-text">重置车辆</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
